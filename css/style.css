@@ -1,0 +1,72 @@
+/* CARDS Posistion */
+.card {
+  display: grid;
+  width: 120px;
+  height: 200px;
+  border: 1px solid black;
+  border-radius: 15px;
+
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-areas:
+    "topleft . . . ."
+    ". . . . ."
+    ". . . . ."
+    ". . . . ."
+    ". . . . bottomright";
+}
+
+.numLC {
+  grid-area: topleft;
+}
+
+.numRC {
+  grid-area: bottomright;
+
+}
+
+
+
+.cardVal1 {
+
+}
+.cardVal1  { 
+
+}
+.cardVal2  {
+
+ }
+.cardVal3  { 
+
+}
+.cardVal4  { 
+
+}
+.cardVal5  { 
+
+}
+.cardVal6  { 
+
+}
+.cardVal7  { 
+
+}
+.cardVal8  {
+
+ }
+.cardVal9  {
+
+ }
+.cardVal10 { 
+
+}
+.cardVal11 { 
+
+}
+.cardVal12 { 
+
+}
+.cardVal13 { 
+
+}
+/* CARDS Posistion */
