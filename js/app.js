@@ -55,8 +55,29 @@ let cards = [
     { name: "queen", number: 12, suit: "spades" },
     { name: "king", number: 13, suit: "spades" }
 ]
+let stack;
+// theres ten stacks in spider solitare
 
-
+// todo make game logic (this will be a rough logic draft)
+// test logic on placement:
+// (here i need too check which card i click)
+// if (number = number + 1) {
+// change placement to under the card
+// }
+// 
+// having stacks for each column:
+// stack[1].foreach(e) {
+// if(e = 13){
+//  if (e = 12){
+//      if (e=11){
+//      } else {
+//      continue;
+//      }
+//  } else {
+//  continue;
+// } else {
+// start again e+1
+// }
 
 for (let i = 0; i < cards.length; i++) {
     const card = document.createElement("div")
