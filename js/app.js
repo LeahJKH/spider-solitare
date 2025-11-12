@@ -15,8 +15,6 @@ let cards = [
     { name: "jack", number: 11, suit: "hearts" },
     { name: "queen", number: 12, suit: "hearts" },
     { name: "king", number: 13, suit: "hearts" },
-
-    // Diamonds
     { name: "ace", number: 1, suit: "diamonds" },
     { name: "two", number: 2, suit: "diamonds" },
     { name: "three", number: 3, suit: "diamonds" },
@@ -30,8 +28,6 @@ let cards = [
     { name: "jack", number: 11, suit: "diamonds" },
     { name: "queen", number: 12, suit: "diamonds" },
     { name: "king", number: 13, suit: "diamonds" },
-
-    // Clubs
     { name: "ace", number: 1, suit: "clubs" },
     { name: "two", number: 2, suit: "clubs" },
     { name: "three", number: 3, suit: "clubs" },
@@ -45,8 +41,6 @@ let cards = [
     { name: "jack", number: 11, suit: "clubs" },
     { name: "queen", number: 12, suit: "clubs" },
     { name: "king", number: 13, suit: "clubs" },
-
-    // Spades
     { name: "ace", number: 1, suit: "spades" },
     { name: "two", number: 2, suit: "spades" },
     { name: "three", number: 3, suit: "spades" },
@@ -78,7 +72,7 @@ for (let i = 0; i < cards.length; i++) {
     middleDiv.className = "middleCont"
     let middleImg = document.createElement("img")
     middleImg.className = "middleImg"
-    middleImg.src = `./images/suit_icons/${cards[i].suit}.png`
+    middleImg.src = `./images/suit_icons/${cards[i].suit}.webp`
 
 
     middleDiv.appendChild(middleImg)
