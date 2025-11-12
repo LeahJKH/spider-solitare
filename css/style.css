@@ -1,4 +1,9 @@
 /* CARDS Posistion */
+#playArea {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 .card {
   display: grid;
   width: 120px;
@@ -10,9 +15,9 @@
   grid-template-rows: repeat(5, 1fr);
   grid-template-areas:
     "topleft . . . ."
-    ". . . . ."
-    ". . . . ."
-    ". . . . ."
+    ". middlec middlec middlec ."
+    ". middlec middlec middlec ."
+    ". middlec middlec middlec ."
     ". . . . bottomright";
 }
 
@@ -24,8 +29,13 @@
   grid-area: bottomright;
 
 }
+.middleCont {
+grid-area: middlec;
+}
 
-
+.middleImg {
+width: 100%;
+}
 
 .cardVal1 {
 
