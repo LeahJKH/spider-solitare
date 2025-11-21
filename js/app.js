@@ -1,6 +1,5 @@
 const playArea = document.querySelector("#playArea")
 let clickedCard;
-let cardArr;
 let cards = [
     { name: "ace", number: 1, suit: "hearts" },
     { name: "two", number: 2, suit: "hearts" },
@@ -15,45 +14,97 @@ let cards = [
     { name: "jack", number: 11, suit: "hearts" },
     { name: "queen", number: 12, suit: "hearts" },
     { name: "king", number: 13, suit: "hearts" },
-    { name: "ace", number: 1, suit: "diamonds" },
-    { name: "two", number: 2, suit: "diamonds" },
-    { name: "three", number: 3, suit: "diamonds" },
-    { name: "four", number: 4, suit: "diamonds" },
-    { name: "five", number: 5, suit: "diamonds" },
-    { name: "six", number: 6, suit: "diamonds" },
-    { name: "seven", number: 7, suit: "diamonds" },
-    { name: "eight", number: 8, suit: "diamonds" },
-    { name: "nine", number: 9, suit: "diamonds" },
-    { name: "ten", number: 10, suit: "diamonds" },
-    { name: "jack", number: 11, suit: "diamonds" },
-    { name: "queen", number: 12, suit: "diamonds" },
-    { name: "king", number: 13, suit: "diamonds" },
-    { name: "ace", number: 1, suit: "clubs" },
-    { name: "two", number: 2, suit: "clubs" },
-    { name: "three", number: 3, suit: "clubs" },
-    { name: "four", number: 4, suit: "clubs" },
-    { name: "five", number: 5, suit: "clubs" },
-    { name: "six", number: 6, suit: "clubs" },
-    { name: "seven", number: 7, suit: "clubs" },
-    { name: "eight", number: 8, suit: "clubs" },
-    { name: "nine", number: 9, suit: "clubs" },
-    { name: "ten", number: 10, suit: "clubs" },
-    { name: "jack", number: 11, suit: "clubs" },
-    { name: "queen", number: 12, suit: "clubs" },
-    { name: "king", number: 13, suit: "clubs" },
-    { name: "ace", number: 1, suit: "spades" },
-    { name: "two", number: 2, suit: "spades" },
-    { name: "three", number: 3, suit: "spades" },
-    { name: "four", number: 4, suit: "spades" },
-    { name: "five", number: 5, suit: "spades" },
-    { name: "six", number: 6, suit: "spades" },
-    { name: "seven", number: 7, suit: "spades" },
-    { name: "eight", number: 8, suit: "spades" },
-    { name: "nine", number: 9, suit: "spades" },
-    { name: "ten", number: 10, suit: "spades" },
-    { name: "jack", number: 11, suit: "spades" },
-    { name: "queen", number: 12, suit: "spades" },
-    { name: "king", number: 13, suit: "spades" }
+    { name: "ace", number: 1, suit: "hearts" },
+    { name: "two", number: 2, suit: "hearts" },
+    { name: "three", number: 3, suit: "hearts" },
+    { name: "four", number: 4, suit: "hearts" },
+    { name: "five", number: 5, suit: "hearts" },
+    { name: "six", number: 6, suit: "hearts" },
+    { name: "seven", number: 7, suit: "hearts" },
+    { name: "eight", number: 8, suit: "hearts" },
+    { name: "nine", number: 9, suit: "hearts" },
+    { name: "ten", number: 10, suit: "hearts" },
+    { name: "jack", number: 11, suit: "hearts" },
+    { name: "queen", number: 12, suit: "hearts" },
+    { name: "king", number: 13, suit: "hearts" },
+    { name: "ace", number: 1, suit: "hearts" },
+    { name: "two", number: 2, suit: "hearts" },
+    { name: "three", number: 3, suit: "hearts" },
+    { name: "four", number: 4, suit: "hearts" },
+    { name: "five", number: 5, suit: "hearts" },
+    { name: "six", number: 6, suit: "hearts" },
+    { name: "seven", number: 7, suit: "hearts" },
+    { name: "eight", number: 8, suit: "hearts" },
+    { name: "nine", number: 9, suit: "hearts" },
+    { name: "ten", number: 10, suit: "hearts" },
+    { name: "jack", number: 11, suit: "hearts" },
+    { name: "queen", number: 12, suit: "hearts" },
+    { name: "king", number: 13, suit: "hearts" },
+    { name: "ace", number: 1, suit: "hearts" },
+    { name: "two", number: 2, suit: "hearts" },
+    { name: "three", number: 3, suit: "hearts" },
+    { name: "four", number: 4, suit: "hearts" },
+    { name: "five", number: 5, suit: "hearts" },
+    { name: "six", number: 6, suit: "hearts" },
+    { name: "seven", number: 7, suit: "hearts" },
+    { name: "eight", number: 8, suit: "hearts" },
+    { name: "nine", number: 9, suit: "hearts" },
+    { name: "ten", number: 10, suit: "hearts" },
+    { name: "jack", number: 11, suit: "hearts" },
+    { name: "queen", number: 12, suit: "hearts" },
+    { name: "king", number: 13, suit: "hearts" },
+    { name: "ace", number: 1, suit: "hearts" },
+    { name: "two", number: 2, suit: "hearts" },
+    { name: "three", number: 3, suit: "hearts" },
+    { name: "four", number: 4, suit: "hearts" },
+    { name: "five", number: 5, suit: "hearts" },
+    { name: "six", number: 6, suit: "hearts" },
+    { name: "seven", number: 7, suit: "hearts" },
+    { name: "eight", number: 8, suit: "hearts" },
+    { name: "nine", number: 9, suit: "hearts" },
+    { name: "ten", number: 10, suit: "hearts" },
+    { name: "jack", number: 11, suit: "hearts" },
+    { name: "queen", number: 12, suit: "hearts" },
+    { name: "king", number: 13, suit: "hearts" },
+    { name: "ace", number: 1, suit: "hearts" },
+    { name: "two", number: 2, suit: "hearts" },
+    { name: "three", number: 3, suit: "hearts" },
+    { name: "four", number: 4, suit: "hearts" },
+    { name: "five", number: 5, suit: "hearts" },
+    { name: "six", number: 6, suit: "hearts" },
+    { name: "seven", number: 7, suit: "hearts" },
+    { name: "eight", number: 8, suit: "hearts" },
+    { name: "nine", number: 9, suit: "hearts" },
+    { name: "ten", number: 10, suit: "hearts" },
+    { name: "jack", number: 11, suit: "hearts" },
+    { name: "queen", number: 12, suit: "hearts" },
+    { name: "king", number: 13, suit: "hearts" },
+    { name: "ace", number: 1, suit: "hearts" },
+    { name: "two", number: 2, suit: "hearts" },
+    { name: "three", number: 3, suit: "hearts" },
+    { name: "four", number: 4, suit: "hearts" },
+    { name: "five", number: 5, suit: "hearts" },
+    { name: "six", number: 6, suit: "hearts" },
+    { name: "seven", number: 7, suit: "hearts" },
+    { name: "eight", number: 8, suit: "hearts" },
+    { name: "nine", number: 9, suit: "hearts" },
+    { name: "ten", number: 10, suit: "hearts" },
+    { name: "jack", number: 11, suit: "hearts" },
+    { name: "queen", number: 12, suit: "hearts" },
+    { name: "king", number: 13, suit: "hearts" },
+    { name: "ace", number: 1, suit: "hearts" },
+    { name: "two", number: 2, suit: "hearts" },
+    { name: "three", number: 3, suit: "hearts" },
+    { name: "four", number: 4, suit: "hearts" },
+    { name: "five", number: 5, suit: "hearts" },
+    { name: "six", number: 6, suit: "hearts" },
+    { name: "seven", number: 7, suit: "hearts" },
+    { name: "eight", number: 8, suit: "hearts" },
+    { name: "nine", number: 9, suit: "hearts" },
+    { name: "ten", number: 10, suit: "hearts" },
+    { name: "jack", number: 11, suit: "hearts" },
+    { name: "queen", number: 12, suit: "hearts" },
+    { name: "king", number: 13, suit: "hearts" },
 ]
 const fStacks = {
     one: document.querySelector("#fstackOne"),
@@ -105,36 +156,94 @@ let stack;
 // start again e+1
 // }
 
-for (let i = 0; i < cards.length; i++) {
+function shuffleDeck() {
+    const deck = [...cards]; // copy of the original cards
+    for (let i = deck.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        [deck[i], deck[j]] = [deck[j], deck[i]]; // swap
+    }
+    return deck;
+}
+
+function startGame() {
+    const deck = shuffleDeck()
+
+    fillStack(stacks.one, 6, deck)
+    fillStack(stacks.two, 6, deck)
+    fillStack(stacks.three, 6, deck)
+    fillStack(stacks.four, 6, deck)
+    fillStack(stacks.five, 5, deck)
+    fillStack(stacks.six, 5, deck)
+    fillStack(stacks.seven, 5, deck)
+    fillStack(stacks.eight, 5, deck)
+    fillStack(stacks.nine, 5, deck)
+    fillStack(stacks.ten, 5, deck)
+}
+
+function fillStack(stack, numberOfCards, deck) {
+    for (let i = 0; i < numberOfCards; i++) {
+        const cardData = deck.pop() // take card from deck
+        const dynamsort = cardCreate(cardData) // pass object directly
+        dynamsort.style.setProperty("--i", stack.children.length)
+        stack.appendChild(dynamsort)
+    }
+}
+
+function cardCreate(cardObj) {
     const card = document.createElement("div")
-    card.classList = `card cardVal${cards[i].number}`
+    card.classList = `card cardVal${cardObj.number}`
+    card.dataset.number = cardObj.number; // store number
+    card.dataset.suit = cardObj.suit;
+
     const numberPl = document.createElement("p")
-    const numberl = document.createTextNode(cards[i].number)
+    const numberl = document.createTextNode(cardObj.number)
     numberPl.className = "numLC"
-    const numberPr = document.createElement("p")
-    const numberr = document.createTextNode(cards[i].number)
-    numberPr.className = "numRC"
-
-    const middleDiv = document.createElement("div")
-    middleDiv.className = "middleCont"
-    let middleImg = document.createElement("img")
-    middleImg.className = "middleImg"
-    middleImg.src = `./images/suit_icons/${cards[i].suit}.webp`
-
-
-    middleDiv.appendChild(middleImg)
-
-    //left top corner
     numberPl.appendChild(numberl)
     card.appendChild(numberPl)
 
-    //appends a div in the middle
+    const middleDiv = document.createElement("div")
+    middleDiv.className = "middleCont"
+    const middleImg = document.createElement("img")
+    middleImg.className = "middleImg"
+    middleImg.src = `./images/suit_icons/${cardObj.suit}.webp`
+    middleDiv.appendChild(middleImg)
     card.appendChild(middleDiv)
 
-    // right bottom corner
+    const numberPr = document.createElement("p")
+    const numberr = document.createTextNode(cardObj.number)
+    numberPr.className = "numRC"
     numberPr.appendChild(numberr)
     card.appendChild(numberPr)
 
-    // puts card on board
-    playArea.appendChild(card)
+    card.addEventListener("click", () => {
+        for (let key in stacks) {
+            const stack = stacks[key];
+
+            const topCard = Array.from(stack.children)
+                .reverse()
+                .find(el => el.classList.contains("card"));
+
+            if (!topCard || parseInt(card.dataset.number) === parseInt(topCard.dataset.number) - 1) {
+                stack.appendChild(card);
+                break;
+            }
+        }
+        resortStack()
+
+    });
+
+
+    return card
+}
+
+
+
+startGame()
+
+function resort(stack) {
+    Array.from(stack.children).forEach((card, index) => {
+        if (card.classList.contains("card")) {
+            card.style.setProperty("--i", index);
+        }
+    });
 }

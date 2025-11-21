@@ -1,16 +1,24 @@
 /* CARDS Posistion */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 #playArea {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  width: 100vw;
+  height: 100vh;
 }
 .card {
   display: grid;
-  width: 120px;
-  height: 200px;
+  width: 100px;
+  height: 180px;
   border: 1px solid black;
   border-radius: 15px;
-
+  background-color: white;
+  padding: 10px 5px;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(5, 1fr);
   grid-template-areas:
@@ -36,7 +44,19 @@ grid-area: middlec;
 .middleImg {
 width: 100%;
 }
-
+#topBar {
+height: 20%;
+width: 100%;
+background-color: aqua;
+}
+#bottomBar {
+height: 80%;
+width: 100%;
+display: flex;
+gap: 110px;
+align-items: flex-start;
+background-color: bisque;
+}
 .cardVal1 {
 
 }
@@ -78,5 +98,16 @@ width: 100%;
 }
 .cardVal13 { 
 
+}
+#stackOne {
+position: relative;
+}
+.stacks {
+  position: relative;
+}
+.stacks .card {
+  position: absolute;
+  left: 0;
+  top: calc(var(--i) * 25px);
 }
 /* CARDS Posistion */
