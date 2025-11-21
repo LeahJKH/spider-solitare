@@ -55,6 +55,32 @@ let cards = [
     { name: "queen", number: 12, suit: "spades" },
     { name: "king", number: 13, suit: "spades" }
 ]
+const fStacks = {
+    one: document.querySelector("#fstackOne"),
+    two: document.querySelector("#fstackTwo"),
+    three: document.querySelector("#fstackThree"),
+    four: document.querySelector("#fstackFour"),
+    five: document.querySelector("#fstackFive"),
+    six: document.querySelector("#fstackSix"),
+    seven: document.querySelector("#fstackSeven"),
+    eight: document.querySelector("#fstackEight"),
+    nine: document.querySelector("#fstackNine"),
+    ten: document.querySelector("#fstackTen"),
+};
+
+const stacks = {
+    one: document.querySelector("#stackOne"),
+    two: document.querySelector("#stackTwo"),
+    three: document.querySelector("#stackThree"),
+    four: document.querySelector("#stackFour"),
+    five: document.querySelector("#stackFive"),
+    six: document.querySelector("#stackSix"),
+    seven: document.querySelector("#stackSeven"),
+    eight: document.querySelector("#stackEight"),
+    nine: document.querySelector("#stackNine"),
+    ten: document.querySelector("#stackTen"),
+};
+
 let stack;
 // theres ten stacks in spider solitare
 
