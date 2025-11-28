@@ -106,6 +106,7 @@ let cards = [
     { name: "queen", number: 12, suit: "hearts" },
     { name: "king", number: 13, suit: "hearts" },
 ]
+// where finished deck will go in future (distant future)
 const fStacks = {
     one: document.querySelector("#fstackOne"),
     two: document.querySelector("#fstackTwo"),
@@ -119,6 +120,8 @@ const fStacks = {
     ten: document.querySelector("#fstackTen"),
 };
 
+
+// stacks for placement 
 const stacks = {
     one: document.querySelector("#stackOne"),
     two: document.querySelector("#stackTwo"),
@@ -132,7 +135,7 @@ const stacks = {
     ten: document.querySelector("#stackTen"),
 };
 
-let stack;
+let stack; // insane play initilaizing stack. do i even use this? 
 // theres ten stacks in spider solitare
 
 // todo make game logic (this will be a rough logic draft)
@@ -157,6 +160,8 @@ let stack;
 // }
 
 function shuffleDeck() {
+    // shuffels the cards in a more random then just math random
+    // need too make more random
     const deck = [...cards]; // copy of the original cards
     for (let i = deck.length - 1; i > 0; i--) {
         let j = Math.floor(Math.random() * (i + 1));
@@ -166,6 +171,7 @@ function shuffleDeck() {
 }
 
 function startGame() {
+    // creates deck for gameplay 
     const deck = shuffleDeck()
 
     fillStack(stacks.one, 6, deck)
@@ -178,18 +184,20 @@ function startGame() {
     fillStack(stacks.eight, 5, deck)
     fillStack(stacks.nine, 5, deck)
     fillStack(stacks.ten, 5, deck)
+    // what the fuck was i on?????
 }
 
 function fillStack(stack, numberOfCards, deck) {
     for (let i = 0; i < numberOfCards; i++) {
         const cardData = deck.pop() // take card from deck
         const dynamsort = cardCreate(cardData) // pass object directly
-        dynamsort.style.setProperty("--i", stack.children.length)
+        dynamsort.style.setProperty("--i", stack.children.length) // posistioning property
         stack.appendChild(dynamsort)
     }
 }
 
 function cardCreate(cardObj) {
+    // ur average card creator. ik its messy need too clean
     const card = document.createElement("div")
     card.classList = `card cardVal${cardObj.number}`
     card.dataset.number = cardObj.number; // store number
@@ -206,6 +214,7 @@ function cardCreate(cardObj) {
     const middleImg = document.createElement("img")
     middleImg.className = "middleImg"
     middleImg.src = `./images/suit_icons/${cardObj.suit}.webp`
+    // should check if queen king or the last one
     middleDiv.appendChild(middleImg)
     card.appendChild(middleDiv)
 
@@ -222,21 +231,59 @@ function cardCreate(cardObj) {
             const topCard = Array.from(stack.children)
                 .reverse()
                 .find(el => el.classList.contains("card"));
+            // i dunno but funny af. dont know what it does
 
             if (!topCard || parseInt(card.dataset.number) === parseInt(topCard.dataset.number) - 1) {
+                // will check card and make it on the stack. movment baby!
                 stack.appendChild(card);
                 break;
             }
         }
-        resortStack()
 
+        resortTool()
+        checkIfWin(stacks.one)
     });
-
 
     return card
 }
 
+function checkIfWin(stack) {
+    // this will count the cards and check if u have a stack
+    Array.from(stack.children).forEach((card, index) => {
+        if (card.dataset.number == 13) {
+            console.log(card.dataset.number)
+            let kingI = index // unused for now might immpliment might not :3 im just silly like that
+            for (let i = 0; i >= 13; i++) {
+                if (stack.children[index + i].dataset.number == 13 - i) {
+                    console.log("pair" + " " + i) // doesnt work. fix leah
+                } else {
+                    console.log("no more")
+                    break;
+                }
 
+            }
+        } else {
+            console.log(stack.children[index])
+
+            console.log("is not 13") // spams console not needed for other than testing
+        }
+    });
+}
+
+function resortTool() {
+    // TODO: make this less code
+    resort(stacks.one)
+    resort(stacks.two)
+    resort(stacks.three)
+    resort(stacks.four)
+    resort(stacks.five)
+    resort(stacks.six)
+    resort(stacks.seven)
+    resort(stacks.eight)
+    resort(stacks.nine)
+    resort(stacks.ten)
+    // lol 
+}
 
 startGame()
 
@@ -244,6 +291,7 @@ function resort(stack) {
     Array.from(stack.children).forEach((card, index) => {
         if (card.classList.contains("card")) {
             card.style.setProperty("--i", index);
+            // resorts based on a property in styles B) 
         }
     });
 }
