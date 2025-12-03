@@ -204,12 +204,16 @@ function cardCreate(cardObj) {
     card.dataset.suit = cardObj.suit;
 
     let numberl;
+    let numberr;
     const numberPl = document.createElement("p")
     if(cardObj.number === 13) {
          numberl = document.createTextNode("K")
+         numberr = document.createTextNode("K")
     } else {
          numberl = document.createTextNode(cardObj.number)
+         numberr = document.createTextNode(cardObj.number)
     }
+
     numberPl.className = "numLC"
     numberPl.appendChild(numberl)
     card.appendChild(numberPl)
@@ -225,13 +229,6 @@ function cardCreate(cardObj) {
     card.appendChild(middleDiv)
 
     const numberPr = document.createElement("p")
-    let numberr;
-    if(cardObj.number === 13) {
-         numberr = document.createTextNode(cardObj.number)
-    } else {
-
-         numberr = document.createTextNode(cardObj.number)
-    }
     numberPr.className = "numRC"
     numberPr.appendChild(numberr)
     card.appendChild(numberPr)
