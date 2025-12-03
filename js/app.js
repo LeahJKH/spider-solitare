@@ -203,11 +203,17 @@ function cardCreate(cardObj) {
     card.dataset.number = cardObj.number; // store number
     card.dataset.suit = cardObj.suit;
 
+    let numberl;
     const numberPl = document.createElement("p")
-    const numberl = document.createTextNode(cardObj.number)
+    if(cardObj.number === 13) {
+         numberl = document.createTextNode("K")
+    } else {
+         numberl = document.createTextNode(cardObj.number)
+    }
     numberPl.className = "numLC"
     numberPl.appendChild(numberl)
     card.appendChild(numberPl)
+    
 
     const middleDiv = document.createElement("div")
     middleDiv.className = "middleCont"
@@ -219,7 +225,13 @@ function cardCreate(cardObj) {
     card.appendChild(middleDiv)
 
     const numberPr = document.createElement("p")
-    const numberr = document.createTextNode(cardObj.number)
+    let numberr;
+    if(cardObj.number === 13) {
+         numberr = document.createTextNode(cardObj.number)
+    } else {
+
+         numberr = document.createTextNode(cardObj.number)
+    }
     numberPr.className = "numRC"
     numberPr.appendChild(numberr)
     card.appendChild(numberPr)
