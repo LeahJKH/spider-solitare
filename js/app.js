@@ -1,3 +1,11 @@
+const wincon = document.querySelector("#winbtn")
+wincon.addEventListener("click", () =>{
+    alert("YOU WIN!")
+})
+
+
+
+
 const playArea = document.querySelector("#playArea")
 let clickedCard;
 let cards = [
