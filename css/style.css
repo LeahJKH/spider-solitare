@@ -4,6 +4,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+body {
+  overflow-x: hidden;
+}
 #playArea {
   display: flex;
   flex-direction: row;
@@ -35,72 +38,57 @@
 
 .numRC {
   grid-area: bottomright;
-
 }
 .middleCont {
-grid-area: middlec;
+  grid-area: middlec;
 }
 
 .middleImg {
-width: 100%;
+  width: 100%;
 }
 #topBar {
-height: 20%;
-width: 100%;
-background-color: aqua;
+  height: 20%;
+  width: 100%;
+  background-color: aqua;
 }
 #bottomBar {
-height: 80%;
-width: 100%;
-display: flex;
-gap: 110px;
-align-items: flex-start;
-background-color: bisque;
+  height: 80%;
+  width: 100%;
+  display: flex;
+  gap: 110px;
+  align-items: flex-start;
+  background-color: bisque;
 }
 .cardVal1 {
-
 }
-.cardVal1  { 
-
+.cardVal1 {
 }
-.cardVal2  {
-
- }
-.cardVal3  { 
-
+.cardVal2 {
 }
-.cardVal4  { 
-
+.cardVal3 {
 }
-.cardVal5  { 
-
+.cardVal4 {
 }
-.cardVal6  { 
-
+.cardVal5 {
 }
-.cardVal7  { 
-
+.cardVal6 {
 }
-.cardVal8  {
-
- }
-.cardVal9  {
-
- }
-.cardVal10 { 
-
+.cardVal7 {
 }
-.cardVal11 { 
-
+.cardVal8 {
 }
-.cardVal12 { 
-
+.cardVal9 {
 }
-.cardVal13 { 
-
+.cardVal10 {
+}
+.cardVal11 {
+}
+.cardVal12 {
+}
+.cardVal13 {
 }
 #stackOne {
-position: relative;
+  position: relative;
 }
 .stacks {
   position: relative;

@@ -1,6 +1,6 @@
 const wincon = document.querySelector("#winbtn")
 wincon.addEventListener("click", () =>{
-    alert("YOU WIN!")
+    alert("YOU WIN!") // because u need too win, dont u?
 })
 
 
@@ -217,6 +217,15 @@ function cardCreate(cardObj) {
     if(cardObj.number === 13) {
          numberl = document.createTextNode("K")
          numberr = document.createTextNode("K")
+    }else if (cardObj.number === 12) {
+         numberl = document.createTextNode("Q")
+         numberr = document.createTextNode("Q")
+    } else if (cardObj.number === 11) {
+         numberl = document.createTextNode("J")
+         numberr = document.createTextNode("J")
+    } else if (cardObj.number === 1) {
+         numberl = document.createTextNode("A")
+         numberr = document.createTextNode("A")
     } else {
          numberl = document.createTextNode(cardObj.number)
          numberr = document.createTextNode(cardObj.number)
