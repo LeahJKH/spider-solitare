@@ -7,6 +7,7 @@ wincon.addEventListener("click", () =>{
 
 
 const playArea = document.querySelector("#playArea")
+const restCards = document.querySelector("#cardBunch")
 let clickedCard;
 let cards = [
     { name: "ace", number: 1, suit: "hearts" },
@@ -193,49 +194,58 @@ function startGame() {
     fillStack(stacks.nine, 5, deck)
     fillStack(stacks.ten, 5, deck)
     // what the fuck was i on?????
+    MoreDeck(restCards, deck)
+}
+
+function MoreDeck(RC, deck) {
+    for(let i = 0; i < deck.length; i++) {
+        const cardData = deck.pop()
+        const dynamsort = cardCreate(cardData, "deck")
+        RC.appendChild(dynamsort)
+    }
 }
 
 function fillStack(stack, numberOfCards, deck) {
     for (let i = 0; i < numberOfCards; i++) {
         const cardData = deck.pop() // take card from deck
-        const dynamsort = cardCreate(cardData) // pass object directly
+        const dynamsort = cardCreate(cardData, "fill") // pass object directly
         dynamsort.style.setProperty("--i", stack.children.length) // posistioning property
         stack.appendChild(dynamsort)
     }
 }
 
-function cardCreate(cardObj) {
+function cardCreate(cardObj, what) {
     // ur average card creator. ik its messy need too clean
     const card = document.createElement("div")
     card.classList = `card cardVal${cardObj.number}`
     card.dataset.number = cardObj.number; // store number
     card.dataset.suit = cardObj.suit;
-
+    
     let numberl;
     let numberr;
     const numberPl = document.createElement("p")
     if(cardObj.number === 13) {
-         numberl = document.createTextNode("K")
-         numberr = document.createTextNode("K")
+        numberl = document.createTextNode("K")
+        numberr = document.createTextNode("K")
     }else if (cardObj.number === 12) {
-         numberl = document.createTextNode("Q")
-         numberr = document.createTextNode("Q")
+        numberl = document.createTextNode("Q")
+        numberr = document.createTextNode("Q")
     } else if (cardObj.number === 11) {
-         numberl = document.createTextNode("J")
-         numberr = document.createTextNode("J")
+        numberl = document.createTextNode("J")
+        numberr = document.createTextNode("J")
     } else if (cardObj.number === 1) {
-         numberl = document.createTextNode("A")
-         numberr = document.createTextNode("A")
+        numberl = document.createTextNode("A")
+        numberr = document.createTextNode("A")
     } else {
-         numberl = document.createTextNode(cardObj.number)
-         numberr = document.createTextNode(cardObj.number)
+        numberl = document.createTextNode(cardObj.number)
+        numberr = document.createTextNode(cardObj.number)
     }
-
+    
     numberPl.className = "numLC"
     numberPl.appendChild(numberl)
     card.appendChild(numberPl)
     
-
+    
     const middleDiv = document.createElement("div")
     middleDiv.className = "middleCont"
     const middleImg = document.createElement("img")
@@ -244,56 +254,82 @@ function cardCreate(cardObj) {
     // should check if queen king or the last one
     middleDiv.appendChild(middleImg)
     card.appendChild(middleDiv)
-
+    
     const numberPr = document.createElement("p")
     numberPr.className = "numRC"
     numberPr.appendChild(numberr)
     card.appendChild(numberPr)
+    if (what === "fill") {
 
-    card.addEventListener("click", () => {
-        for (let key in stacks) {
-            const stack = stacks[key];
-
-            const topCard = Array.from(stack.children)
+        
+        card.addEventListener("click", () => {
+            for (let key in stacks) {
+                const stack = stacks[key];
+                
+                const topCard = Array.from(stack.children)
                 .reverse()
                 .find(el => el.classList.contains("card"));
-            // i dunno but funny af. dont know what it does
-
-            if (!topCard || parseInt(card.dataset.number) === parseInt(topCard.dataset.number) - 1) {
-                // will check card and make it on the stack. movment baby!
-                stack.appendChild(card);
-                break;
+                // i dunno but funny af. dont know what it does
+                
+                if (!topCard || parseInt(card.dataset.number) === parseInt(topCard.dataset.number) - 1) {
+                    // will check card and make it on the stack. movment baby!
+                    stack.appendChild(card);
+                    break;
+                }
             }
-        }
+            
+            resortTool()
+            for (let key in stacks) {
+                checkIfWin(stacks[key]);
+            } // checks all stacks for potential win
+        });
+    } else if (what === "deck") {
 
-        resortTool()
-        checkIfWin(stacks.one)
-    });
-
+        
+    } else {
+        console.log("oopsies it broke lmao")
+        
+    }
     return card
 }
 
 function checkIfWin(stack) {
-    // this will count the cards and check if u have a stack
-    Array.from(stack.children).forEach((card, index) => {
-        if (card.dataset.number == 13) {
-            console.log(card.dataset.number)
-            let kingI = index // unused for now might immpliment might not :3 im just silly like that
-            for (let i = 0; i >= 13; i++) {
-                if (stack.children[index + i].dataset.number == 13 - i) {
-                    console.log("pair" + " " + i) // doesnt work. fix leah
-                } else {
-                    console.log("no more")
+    const cards = Array.from(stack.children).filter(c => c.classList.contains("card"));
+
+    for (let i = 0; i < cards.length; i++) {
+        // will check if highest card is a King
+        if (parseInt(cards[i].dataset.number) === 13) {
+            let completed = true; // help variable too keep it from closing and too display win msg
+            
+            for (let index = 1; index < 13; index++) {
+                const nextCard = cards[i + index];
+                if (!nextCard) {
+                    completed = false;
                     break;
                 }
 
+                const expected = 13 - index;
+                if (parseInt(nextCard.dataset.number) !== expected) {
+                    completed = false;
+                    break;
+                }
             }
-        } else {
-            console.log(stack.children[index])
 
-            console.log("is not 13") // spams console not needed for other than testing
+            if (completed) {
+                console.log("damn pookie u actually did it congrats");
+
+                // removes stack from playing board
+                // !TODO: fill fstacks with cards 
+                for (let offset = 0; offset < 13; offset++) {
+                    cards[i + offset].remove();
+                }
+
+                return true;
+            }
         }
-    });
+    }
+
+    return false;
 }
 
 function resortTool() {

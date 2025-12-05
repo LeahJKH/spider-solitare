@@ -7,6 +7,14 @@
 body {
   overflow-x: hidden;
 }
+#cardBunch {
+  position: relative;
+}
+#cardBunch > div {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
 #playArea {
   display: flex;
   flex-direction: row;
