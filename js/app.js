@@ -194,7 +194,7 @@ function startGame() {
     fillStack(stacks.nine, 5, deck)
     fillStack(stacks.ten, 5, deck)
     // what the fuck was i on?????
-    MoreDeck(restCards, deck)
+    MoreDeck(restCards, deck) // ur just like fillstack u lie
 }
 
 function MoreDeck(RC, deck) {
@@ -223,6 +223,8 @@ function cardCreate(cardObj, what) {
     
     let numberl;
     let numberr;
+    // i should be able too reuse no?
+
     const numberPl = document.createElement("p")
     if(cardObj.number === 13) {
         numberl = document.createTextNode("K")
@@ -259,9 +261,9 @@ function cardCreate(cardObj, what) {
     numberPr.className = "numRC"
     numberPr.appendChild(numberr)
     card.appendChild(numberPr)
-    if (what === "fill") {
 
-        
+    // add click too card
+    if (what === "fill") {
         card.addEventListener("click", () => {
             for (let key in stacks) {
                 const stack = stacks[key];
@@ -284,7 +286,7 @@ function cardCreate(cardObj, what) {
             } // checks all stacks for potential win
         });
     } else if (what === "deck") {
-
+        // TODO ummmm ahhhh umm idk :3
         
     } else {
         console.log("oopsies it broke lmao")
@@ -316,6 +318,7 @@ function checkIfWin(stack) {
             }
 
             if (completed) {
+                // dancing miku gif
                 console.log("damn pookie u actually did it congrats");
 
                 // removes stack from playing board
