@@ -183,6 +183,7 @@ function startGame() {
     // creates deck for gameplay 
     const deck = shuffleDeck()
 
+
     fillStack(stacks.one, 6, deck)
     fillStack(stacks.two, 6, deck)
     fillStack(stacks.three, 6, deck)
@@ -226,7 +227,7 @@ function cardCreate(cardObj, what) {
     // i should be able too reuse no?
 
     const numberPl = document.createElement("p")
-    if(cardObj.number === 13) {
+    if(cardObj.number === 13) { // this is such a stupid fix TODO: make this more logical
         numberl = document.createTextNode("K")
         numberr = document.createTextNode("K")
     }else if (cardObj.number === 12) {
@@ -285,7 +286,7 @@ function cardCreate(cardObj, what) {
                 checkIfWin(stacks[key]);
             } // checks all stacks for potential win
         });
-    } else if (what === "deck") {
+    } else if (what === "deck") { 
         // TODO ummmm ahhhh umm idk :3
         
     } else {
@@ -336,18 +337,12 @@ function checkIfWin(stack) {
 }
 
 function resortTool() {
-    // TODO: make this less code
-    resort(stacks.one)
-    resort(stacks.two)
-    resort(stacks.three)
-    resort(stacks.four)
-    resort(stacks.five)
-    resort(stacks.six)
-    resort(stacks.seven)
-    resort(stacks.eight)
-    resort(stacks.nine)
-    resort(stacks.ten)
-    // lol 
+// this block will make sure new card is stacked neatly when put in a new stack but also double check the others
+    for(let stack in stacks) {
+        console.log( stacks[stack])
+        resort(stacks[stack])
+    }
+
 }
 
 startGame()
