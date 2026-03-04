@@ -21,3 +21,7 @@ TODO:
 ## EXTRA
 
 i just wanted too thank you for trying this and gladly send me issues if you find something that would be so much help. hope the rest of your day is amazing
+
+## reflections 
+
+writing a changelog is hard but important too keep styling in it so people can properly read. ive also learnt some new tricks with javascript and css which is things ill start using more from now on
