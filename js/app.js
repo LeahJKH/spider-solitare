@@ -219,23 +219,19 @@ function cardCreate(cardObj, what) {
     // i should be able too reuse no?
 
     const numberPl = document.createElement("p")
-    if(cardObj.number === 13) { // this is such a stupid fix TODO: make this more logical
-        numberl = document.createTextNode("K")
-        numberr = document.createTextNode("K")
-    }else if (cardObj.number === 12) {
-        numberl = document.createTextNode("Q")
-        numberr = document.createTextNode("Q")
-    } else if (cardObj.number === 11) {
-        numberl = document.createTextNode("J")
-        numberr = document.createTextNode("J")
-    } else if (cardObj.number === 1) {
-        numberl = document.createTextNode("A")
-        numberr = document.createTextNode("A")
-    } else {
-        numberl = document.createTextNode(cardObj.number)
-        numberr = document.createTextNode(cardObj.number)
+
+    const specialCards = {
+        1: "A",
+        11: "J",
+        12: "Q",
+        13: "K"
     }
-    
+    // these will switch if the number correlates
+    let switchSpecials = specialCards[cardObj.number] ?? cardObj.number
+
+    numberl = document.createTextNode(switchSpecials)
+    numberr = document.createTextNode(switchSpecials)
+       
     numberPl.className = "numLC"
     numberPl.appendChild(numberl)
     card.appendChild(numberPl)

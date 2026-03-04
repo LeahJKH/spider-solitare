@@ -7,6 +7,8 @@
 body {
 
   overflow: hidden;
+  background: #398760;
+background: radial-gradient(circle,rgba(57, 135, 96, 1) 39%, rgba(51, 96, 73, 1) 72%, rgba(50, 92, 71, 1) 100%);
 }
 #cardBunch {
   position: relative;
@@ -59,12 +61,15 @@ body {
   height: 30%;
   width: 100%;
   background-image: url("../images/counters/woodBrown.jpg");
-  background-repeat:repeat-x;
+  background-repeat:repeat;
   background-size: 34%;
   padding: 15px 25px;
   border-bottom: 1px solid black;
   box-shadow: 0 5px 20px black;
   z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  
 }
 #bottomBar {
   z-index: 1;
@@ -73,11 +78,10 @@ body {
   display: flex;
   gap: 110px;
   align-items: flex-start;
-  padding: 25px 0;
-  justify-content: center;
+  padding: 25px;
+  justify-content: left;
 
-background: #398760;
-background: radial-gradient(circle,rgba(57, 135, 96, 1) 39%, rgba(51, 96, 73, 1) 72%, rgba(50, 92, 71, 1) 100%);
+
 }
 .cardVal1 {
 }
